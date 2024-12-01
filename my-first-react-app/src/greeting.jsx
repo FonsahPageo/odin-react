@@ -1,25 +1,29 @@
-export function Greeting() {
-  return <h1>&quot; I swear by my floral bonnet, I will end you.&quot;</h1>;
-}
+function List(props) {
+  if(!props.animals){
+    return <div>Loading...</div>;
+  }
 
-export function HelloWorld() {
+  if(props.animals.length === 0) {
+    return <div>There are no animals in the list</div>;
+  }
+
   return (
-    <>
-      <p>Hello world</p>
-    </>
+    <ul>
+      {props.animals.map((animal) => {
+        // return animal.startsWith("L") ? <li key={animal}>{animal}</li> : null ;
+        return animal.startsWith("L") && <li key={animal}>{animal}</li> ;
+      })}
+    </ul>
   );
 }
 
-export function Circle() {
+export function MyAnimals() {
+  const animals = ["Lion", "Spider", "Shark", "Leopard"];
+
   return (
     <>
-      <h1>Test Title</h1>
-      <svg>
-        <circle cx="25" cy="75" r="20" stroke="green" strokeWidth="2" />
-      </svg>
-      <form>
-        <input type="text" />
-      </form>
+      <h1>Animals: </h1>
+      <List animals={animals} />
     </>
   );
 }
