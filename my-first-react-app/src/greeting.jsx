@@ -1,29 +1,39 @@
-function List(props) {
-  if(!props.animals){
-    return <div>Loading...</div>;
-  }
+const todos = [
+  { task: "Mow the yard", id: crypto.randomUUID() },
+  { task: "Work on Odin Projects", id: crypto.randomUUID() },
+  { task: "Feed the cat", id: crypto.randomUUID() },
+];
 
-  if(props.animals.length === 0) {
-    return <div>There are no animals in the list</div>;
-  }
-
+export function TodoList() {
   return (
     <ul>
-      {props.animals.map((animal) => {
-        // return animal.startsWith("L") ? <li key={animal}>{animal}</li> : null ;
-        return animal.startsWith("L") && <li key={animal}>{animal}</li> ;
-      })}
+      {todos.map((todo) => (
+        <li key={todo.id}>{todo.task}</li>
+      ))}
     </ul>
   );
 }
 
-export function MyAnimals() {
-  const animals = ["Lion", "Spider", "Shark", "Leopard"];
-
+const months = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
+];
+export function MonthList() {
   return (
-    <>
-      <h1>Animals: </h1>
-      <List animals={animals} />
-    </>
+    <ul>
+      {months.map((month, index) => (
+        <li key={index}>{month}</li>
+      ))}
+    </ul>
   );
 }
