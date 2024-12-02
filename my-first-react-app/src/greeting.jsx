@@ -1,39 +1,40 @@
-const todos = [
-  { task: "Mow the yard", id: crypto.randomUUID() },
-  { task: "Work on Odin Projects", id: crypto.randomUUID() },
-  { task: "Feed the cat", id: crypto.randomUUID() },
-];
+// export function Button(props) {
+//   const buttonStyle = {
+//     color: props.color,
+//     fontSize: props.fontSize + "px",
+//   };
 
-export function TodoList() {
-  return (
-    <ul>
-      {todos.map((todo) => (
-        <li key={todo.id}>{todo.task}</li>
-      ))}
-    </ul>
-  );
+//   return <button style={buttonStyle}>{props.text}</button>;
+// }
+
+// export function Button({text, color, fontSize}) {
+//   const buttonStyle = {
+//     color: color,
+//     fontSize: fontSize + "px",
+//   };
+
+//   return <button style={buttonStyle}>{text}</button>;
+// }
+
+export function Button({ text = "Click Me", color = "blue", fontSize = 12, handleClick }) {
+  const buttonStyle = {
+    color: color,
+    fontSize: fontSize + "px",
+  };
+
+  return <button onClick={handleClick} style={buttonStyle}>{text}</button>;
 }
 
-const months = [
-  "Jan",
-  "Feb",
-  "Mar",
-  "Apr",
-  "May",
-  "Jun",
-  "Jul",
-  "Aug",
-  "Sep",
-  "Oct",
-  "Nov",
-  "Dec",
-];
-export function MonthList() {
+export function Main() {
+  const handleButtonClick = (url) => {
+    window.location.href = url;
+  };
+
   return (
-    <ul>
-      {months.map((month, index) => (
-        <li key={index}>{month}</li>
-      ))}
-    </ul>
+    <div>
+      <Button handleClick={() => handleButtonClick('https://www.theodinproject.com')}/>
+      <Button text="Don't Click me" color="red" fontSize={12} />
+      <Button fontSize={20}/>
+    </div>
   );
 }
