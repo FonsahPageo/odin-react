@@ -1,40 +1,38 @@
-// export function Button(props) {
-//   const buttonStyle = {
-//     color: props.color,
-//     fontSize: props.fontSize + "px",
-//   };
+import { useState } from "react";
+import { sculptureList } from "./data";
 
-//   return <button style={buttonStyle}>{props.text}</button>;
-// }
+export function Gallery() {
+  const [index, setIndex] = useState(0);
+  const [showMore, setShowMore] = useState(false);
 
-// export function Button({text, color, fontSize}) {
-//   const buttonStyle = {
-//     color: color,
-//     fontSize: fontSize + "px",
-//   };
+  function handleClick() {
+    setIndex(index + 1);
+  }
 
-//   return <button style={buttonStyle}>{text}</button>;
-// }
+  function handleShowMore() {
+    setShowMore(!showMore);
+  }
 
-export function Button({ text = "Click Me", color = "blue", fontSize = 12, handleClick }) {
-  const buttonStyle = {
-    color: color,
-    fontSize: fontSize + "px",
-  };
-
-  return <button onClick={handleClick} style={buttonStyle}>{text}</button>;
-}
-
-export function Main() {
-  const handleButtonClick = (url) => {
-    window.location.href = url;
-  };
-
+  let sculpture = sculptureList[index];
   return (
-    <div>
-      <Button handleClick={() => handleButtonClick('https://www.theodinproject.com')}/>
-      <Button text="Don't Click me" color="red" fontSize={12} />
-      <Button fontSize={20}/>
-    </div>
+    <>
+      <button onClick={handleClick}>Next</button>
+
+      <h2>
+        <i>{sculpture.name}</i> by {sculpture.artist}
+      </h2>
+
+      <h3>
+        ({index + 1} of {sculptureList.length})
+      </h3>
+
+      <button onClick={handleShowMore}> {showMore ? 'Hide' : 'Show' } details</button>
+
+      {showMore && <p>{sculpture.description}</p>}
+
+      <img src={sculpture.url} alt={sculpture.alt} />
+
+      {/* <p>{sculpture.description}</p> */}
+    </>
   );
 }
