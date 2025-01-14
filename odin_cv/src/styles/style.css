@@ -1,0 +1,56 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: first baseline;
+    gap: 100px; 
+    padding: 30px;
+    width: 100%;
+}
+
+form, .finalCv {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 5px;
+    background: #f2f2f2;
+    color: #000;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0);
+    padding: 20px;
+}
+
+label {
+    display: block;
+}
+
+input,
+select,
+textarea {
+    padding: 10px;
+    background-color: #fff;
+    color: #000;
+}
+
+textarea {
+    height: 150px;
+}
+
+.actionButtons {
+    display: flex;
+    padding: 10px;
+    width: 100%;
+    gap: 8px;
+}
+
+button {
+    width: 100%;
+}
+
+.finalCv {
+    margin-top: 20px;
+    border: none;
+    background: #646cff;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
