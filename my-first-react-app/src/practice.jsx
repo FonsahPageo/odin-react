@@ -1,15 +1,26 @@
-import PropTypes from "prop-types";
+import { useParams } from "react-router-dom";
+import { DefaultProfile } from "./defaultprofile";
+import { Spinach } from "./spinach";
+import { Popeye } from "./popeye";
 
-const RenderName = (props) => {
-  return <div>{props.name}</div>;
+const Profile = () => {
+  const { name } = useParams();
+
+  return (
+    <div>
+      <h1>Hello from profile page!</h1>
+      <p>So, how are you?</p>
+      <hr />
+      <h2>The profile visited is here:</h2>
+      {name === "popeye" ? (
+        <Popeye />
+      ) : name === "spinach" ? (
+        <Spinach />
+      ) : (
+        <DefaultProfile />
+      )}
+    </div>
+  );
 };
 
-RenderName.propTypes = {
-  name: PropTypes.string,
-};
-
-RenderName.defaultProps = {
-  name: 'Zach',
-}
-
-export { RenderName };
+export { Profile };
