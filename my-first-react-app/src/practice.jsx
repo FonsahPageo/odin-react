@@ -1,5 +1,15 @@
-const CustomButton = ({ onClick }) => {
-  return <button onClick={onClick}>Click Me</button>;
+import PropTypes from "prop-types";
+
+const RenderName = (props) => {
+  return <div>{props.name}</div>;
 };
 
-export { CustomButton };
+RenderName.propTypes = {
+  name: PropTypes.string,
+};
+
+RenderName.defaultProps = {
+  name: 'Zach',
+}
+
+export { RenderName };
