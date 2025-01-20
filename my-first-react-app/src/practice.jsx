@@ -1,26 +1,38 @@
-import { useParams } from "react-router-dom";
-import { DefaultProfile } from "./defaultprofile";
-import { Spinach } from "./spinach";
-import { Popeye } from "./popeye";
+import { useEffect, useState } from "react";
 
-const Profile = () => {
-  const { name } = useParams();
+const useImageURL = () => {
+  const [imageURL, setImageURL] = useState(null);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch("https://jsonplaceholder.typicode.com/photos", { mode: "cors" })
+      .then((response) => {
+        if (response.status >= 400) {
+          throw new Error("Server error");
+        }
+        return response.json();
+      })
+      .then((response) => setImageURL(response[0].url))
+      .catch((error) => setError(error))
+      .finally(() => setLoading(false));
+  }, []);
+
+  return { imageURL, error, loading };
+};
+
+const Image = () => {
+  const { imageURL, error, loading } = useImageURL();
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>A network error was encountered</p>;
 
   return (
-    <div>
-      <h1>Hello from profile page!</h1>
-      <p>So, how are you?</p>
-      <hr />
-      <h2>The profile visited is here:</h2>
-      {name === "popeye" ? (
-        <Popeye />
-      ) : name === "spinach" ? (
-        <Spinach />
-      ) : (
-        <DefaultProfile />
-      )}
-    </div>
+    <>
+      <h1>An image</h1>
+      <img src={imageURL} alt={"placeholder text"} />
+    </>
   );
 };
 
-export { Profile };
+export { Image };

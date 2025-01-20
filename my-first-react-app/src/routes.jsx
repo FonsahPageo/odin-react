@@ -1,21 +1,21 @@
-import App from "./App";
+import { App } from "./App";
 import { ErrorPage } from "./errorpage";
-import { Profile } from "./practice";
+import { Image } from "./practice";
 
 const routes = [
-    { 
-        path: "/",
-        element: <App />,
-        errorElement: <ErrorPage />,
-    },
-    {
-        path: "profile",
-        element: <Profile />,
-    },
-    {
-        path: "profile/:name",
-        element: <Profile />,
-    },
+  {
+    path: "/",
+    element: <App />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "practice",
+    element: <Image />,
+  },
+  {
+    path: "practice/:name",
+    element: <Image />,
+  },
 ];
 
 export { routes };

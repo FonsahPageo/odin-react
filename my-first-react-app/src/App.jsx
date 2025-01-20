@@ -8,13 +8,7 @@ const App = () => {
       <nav>
         <ul>
           <li>
-            <Link to="profile">Profile page</Link>
-          </li>
-          <li>
-            <Link to="profile/spinach">Spinach Page</Link>
-          </li>
-          <li>
-          <Link to="profile/popeye">Popeye Page</Link>
+            <Link to="practice">Practice page</Link>
           </li>
         </ul>
       </nav>
@@ -22,4 +16,4 @@ const App = () => {
   );
 };
 
-export default App;
+export { App };
